@@ -1,0 +1,9 @@
+server:
+  port: 9000
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        service: message-service
+      server-addr: localhost:8848

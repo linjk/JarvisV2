@@ -1,0 +1,9 @@
+server:
+  port: 6000
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        service: user-service
+      server-addr: localhost:8848
