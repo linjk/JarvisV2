@@ -1,5 +1,6 @@
 package cn.linjk.jarvis.user.rest;
 
+import cn.linjk.jarvis.api.message.IMessageApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,11 +16,11 @@ import org.springframework.web.client.RestTemplate;
  */
 @RestController
 public class UserRest {
-    @Autowired private RestTemplate restTemplate;
+    @Autowired private IMessageApi messageApi;
 
     @GetMapping("/user-test")
     public String getMessage() {
-        String msg = restTemplate.getForObject("http://message-service/msg-test", String.class);
-        return msg;
+        boolean result = messageApi.sendMessage(1, "test");
+        return result ? "success" : "fail";
     }
 }

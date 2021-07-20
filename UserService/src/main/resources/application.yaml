@@ -7,3 +7,14 @@ spring:
       discovery:
         service: user-service
       server-addr: localhost:8848
+  application:
+    name: user-center
+
+dubbo:
+  application:
+    name: user-center
+    id: user-center
+  registry:
+    address: nacos://localhost:8848
+  protocol:
+    name: dubbo
