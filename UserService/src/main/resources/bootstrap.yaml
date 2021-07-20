@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        service: user-service
+      server-addr: localhost:8848
+      config:
+        file-extension: yaml
+        server-addr: localhost:8848
+  application:
+    name: user-center
