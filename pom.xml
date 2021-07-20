@@ -13,6 +13,7 @@
     <modules>
         <module>UserService</module>
         <module>MessageService</module>
+        <module>ServiceApi</module>
     </modules>
 
     <parent>
