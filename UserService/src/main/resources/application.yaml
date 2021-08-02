@@ -9,3 +9,17 @@ dubbo:
     address: nacos://localhost:8848
   protocol:
     name: dubbo
+
+spring:
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+      filter:
+        enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
