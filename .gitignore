@@ -1,4 +1,9 @@
 *.iml
+*.log
+*.dat
 
 .idea/
 target/
+ControlCenter/Nacos/data/
+ControlCenter/Nacos/logs
+
