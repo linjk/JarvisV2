@@ -1,6 +1,7 @@
 *.iml
 *.log
 *.dat
+*.rdb
 
 .idea/
 target/
