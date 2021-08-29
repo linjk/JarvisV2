@@ -8,7 +8,7 @@ spring:
         service: skill-service
       server-addr: localhost:8848
   datasource:
-    url: jdbc:mysql://localhost:3298/jarvis
+    url: jdbc:mysql://localhost:3308/jarvis
     username: ${MYSQL_ACCOUNT}
     password: ${MYSQL_PASSWORD}
   redis:
