@@ -1,6 +1,6 @@
 package cn.linjk.jarvis.product.repo;
 
-import cn.linjk.jarvis.product.entity.SkillGood;
+import cn.linjk.jarvis.common.entity.SkillGood;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

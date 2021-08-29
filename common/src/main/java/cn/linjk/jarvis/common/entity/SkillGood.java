@@ -1,4 +1,4 @@
-package cn.linjk.jarvis.product.entity;
+package cn.linjk.jarvis.common.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  *
  * @fileName: SkillGood
  * @author: linjk
- * @date: 2021/8/29 下午11:08
+ * @date: 2021/8/30 上午12:20
  * @description:
  */
 @Entity

@@ -1,6 +1,6 @@
 package cn.linjk.jarvis.product.service;
 
-import cn.linjk.jarvis.product.entity.SkillGood;
+import cn.linjk.jarvis.common.entity.SkillGood;
 import cn.linjk.jarvis.product.repo.SkillGoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

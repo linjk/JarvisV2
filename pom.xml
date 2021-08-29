@@ -16,6 +16,7 @@
         <module>ServiceApi</module>
         <module>SkillService</module>
         <module>ProductService</module>
+        <module>common</module>
     </modules>
 
     <parent>
