@@ -12,4 +12,25 @@
     <artifactId>Services</artifactId>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>UserService</module>
+        <module>MessageService</module>
+        <module>SkillService</module>
+        <module>ProductService</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.linjk.jarvis</groupId>
+            <artifactId>ServiceApi</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-dubbo</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

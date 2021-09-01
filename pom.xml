@@ -11,12 +11,6 @@
     <description>I am Jarvis</description>
 
     <modules>
-        <module>UserService</module>
-        <module>MessageService</module>
-        <module>ServiceApi</module>
-        <module>SkillService</module>
-        <module>ProductService</module>
-        <module>common</module>
         <module>Modules</module>
         <module>Services</module>
     </modules>
