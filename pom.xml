@@ -17,6 +17,8 @@
         <module>SkillService</module>
         <module>ProductService</module>
         <module>common</module>
+        <module>Modules</module>
+        <module>Services</module>
     </modules>
 
     <parent>
