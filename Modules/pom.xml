@@ -12,7 +12,7 @@
     <artifactId>Modules</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>log</module>
+        <module>journal</module>
     </modules>
 
 </project>
