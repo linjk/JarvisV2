@@ -18,6 +18,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDubbo
 @EnableDiscoveryClient
 @SpringBootApplication
+@ComponentScan(basePackages = {
+        "cn.linjk.jarvis.user",
+        "cn.linjk.jarvis.journal"
+})
 public class UserServiceApplication {
     @DubboReference(version = "1.0.0", group = "message") public IMessageApi messageApi;
 

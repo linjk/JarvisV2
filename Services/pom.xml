@@ -28,6 +28,12 @@
         </dependency>
 
         <dependency>
+            <groupId>cn.linjk.jarvis</groupId>
+            <artifactId>journal</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-dubbo</artifactId>
         </dependency>
