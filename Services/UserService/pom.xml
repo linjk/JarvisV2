@@ -11,5 +11,5 @@
 
     <artifactId>UserService</artifactId>
     <packaging>jar</packaging>
-
+    <description>用户信息服务</description>
 </project>

@@ -7,21 +7,9 @@
         <groupId>cn.linjk.jarvis</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
+    <description>消息服务</description>
 
     <artifactId>MessageService</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>cn.linjk.jarvis</groupId>
-            <artifactId>ServiceApi</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-dubbo</artifactId>
-        </dependency>
-    </dependencies>
-
 </project>
