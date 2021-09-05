@@ -17,6 +17,14 @@ spring:
         dashboard: localhost:8080
       filter:
         enabled: false
+  datasource:
+    url: jdbc:mysql://localhost:3308/jarvis
+    username: ${MYSQL_ACCOUNT}
+    password: ${MYSQL_PASSWORD}
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
 
 management:
   endpoints:
