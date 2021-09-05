@@ -1,0 +1,29 @@
+server:
+  port: 9000
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        service: message-service
+      server-addr: localhost:8848
+  datasource:
+    url: jdbc:mysql://localhost:3308/jarvis
+    username: ${MYSQL_ACCOUNT}
+    password: ${MYSQL_PASSWORD}
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+  application:
+    name: message-center
+
+dubbo:
+  application:
+    name: message-center
+    id: message-center
+  registry:
+    address: nacos://localhost:8848
+  protocol:
+    name: dubbo
+    port: 20448
