@@ -1,19 +1,16 @@
 package cn.linjk.jarvis.journal.config;
 
 import cn.linjk.jarvis.journal.entity.AccessLogEvent;
-import cn.linjk.jarvis.journal.entity.AccessLogEventFactory;
-import cn.linjk.jarvis.journal.handler.AccessLogEventHandler;
-import cn.linjk.jarvis.journal.handler.AccessLogEventProducer;
-import com.lmax.disruptor.RingBuffer;
-import com.lmax.disruptor.SleepingWaitStrategy;
-import com.lmax.disruptor.dsl.Disruptor;
+import cn.linjk.jarvis.journal.handler.AccessLogConsumer;
+import cn.linjk.jarvis.journal.handler.AccessLogProducer;
+import com.lmax.disruptor.*;
 import com.lmax.disruptor.dsl.ProducerType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
-import java.nio.ByteBuffer;
-import java.util.concurrent.ExecutorService;
+import java.util.UUID;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 
 /**
@@ -29,36 +26,67 @@ import java.util.concurrent.Executors;
 public class DisruptorConfig implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
-        log.info("starting disruptor...");
-        AccessLogEventFactory accessLogEventFactory = new AccessLogEventFactory();
-        int ringBufferSize = 1024 * 1024;
-        // TODO 待优化，使用自定义的线程池，这里使用固定边界大小的
-        ExecutorService executorService =  Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-        Disruptor<AccessLogEvent> disruptor = new Disruptor<>(
-                accessLogEventFactory,
-                ringBufferSize,
-                executorService,
-                ProducerType.SINGLE,
-                /**
-                 * BlockingWaitStrategy: 最低效的策略，但对CPU的消耗最小并且在各种不同部署环境中能提供更加一致的性能表现
-                 * SleepingWaitStrategy: 性能表现和BlockingWaitStrategy差不多，但对生产者线程的影响最小，适合用于异步日志类似的场景
-                 * YieldingWaitStrategy: 性能最好，适合用于低延迟的系统，在要求极高性能且事件处理线数小于CPU逻辑核心数的场景中，
-                 *                       推荐使用，例如：CPU开启超线程的特性
-                 */
-                new SleepingWaitStrategy());
-        // 添加消费者监听
-        disruptor.handleEventsWith(new AccessLogEventHandler());
-        disruptor.start();
-        // test
-        RingBuffer<AccessLogEvent> accessLogEventRingBuffer = disruptor.getRingBuffer();
-        AccessLogEventProducer activeLogEventProducer = new AccessLogEventProducer(accessLogEventRingBuffer);
-
-        ByteBuffer byteBuffer = ByteBuffer.allocate(8);
-        for (long i = 0; i < 100; i++) {
-            byteBuffer.putLong(0, i);
-            activeLogEventProducer.sendData(byteBuffer);
+        RingBuffer<AccessLogEvent> ringBuffer = RingBuffer.create(
+                ProducerType.MULTI,
+                AccessLogEvent::new,
+                1024 * 1024,
+                new YieldingWaitStrategy()
+        );
+        SequenceBarrier sequenceBarrier = ringBuffer.newBarrier();
+        AccessLogConsumer[] consumers = new AccessLogConsumer[10];
+        for (int i = 0; i < consumers.length; i++) {
+            consumers[i] = new AccessLogConsumer("C" + i);
         }
-//        disruptor.shutdown();
-//        executorService.shutdown();
+        WorkerPool<AccessLogEvent> accessLogEventWorkerPool = new WorkerPool<>(
+                ringBuffer,
+                sequenceBarrier,
+                new ExceptionHandler<AccessLogEvent>() {
+                    @Override
+                    public void handleEventException(Throwable ex, long sequence, AccessLogEvent event) {
+                        System.out.println("消费消息时出现异常");
+                    }
+
+                    @Override
+                    public void handleOnStartException(Throwable ex) {
+
+                    }
+
+                    @Override
+                    public void handleOnShutdownException(Throwable ex) {
+
+                    }
+                },
+                consumers
+        );
+        // 设置多个消费者的sequence用于每个消费者单独统计消费消息的进度
+        ringBuffer.addGatingSequences(accessLogEventWorkerPool.getWorkerSequences());
+        accessLogEventWorkerPool.start(Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()));
+
+        // 生产数据测试
+        CountDownLatch latch = new CountDownLatch(1);
+
+        for (int i = 0; i < 100; i++) {
+            AccessLogProducer producer = new AccessLogProducer(ringBuffer);
+            new Thread(new Runnable(){
+                @Override
+                public void run() {
+                    try {
+                        latch.await();
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    for (int j = 0; j < 100; j++) {
+                        producer.onData(UUID.randomUUID().toString());
+                    }
+                }
+            }).start();
+        }
+        Thread.sleep(2000);
+        System.out.println("开始生产发布数据...");
+        latch.countDown();
+        Thread.sleep(10000);
+        System.out.println("任务总数: " + consumers[0].getCount());
     }
 }
