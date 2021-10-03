@@ -23,7 +23,8 @@ add_compile_definitions(MYSQLPP_MYSQL_HEADERS_BURIED)
 include_directories(
         "/usr/local/opt/mysql++/include"
         "/usr/local/opt/mysql-client/include"
-        "/usr/local/include")
+        "/usr/local/include"
+        "/usr/local/include/opencv4")
 
 link_directories(
         "/usr/local/opt/mysql++/lib"

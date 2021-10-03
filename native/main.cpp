@@ -35,6 +35,9 @@ int main(int argc, char* argv[]) {
 
 void printUsage() {
     cout << "-----------------------------------" << endl;
+    cout << "version info: " << endl;
+    cout << "- OpenCV: " << CV_VERSION << endl;
+    cout << "-----------------------------------" << endl;
     cout << "Usage:" << endl;
     cout << "1. Run gTest." << endl;
     cout << "-----------------------------------" << endl;
