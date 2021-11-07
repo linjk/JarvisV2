@@ -9,6 +9,7 @@
 //#include "utils/mqtt_util.hpp"
 
 int main(int argc, char* argv[]) {
+    print_system_info();
     if (2 == argc) {
         int selection;
         istringstream params(argv[1]);
@@ -33,10 +34,11 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
+void print_system_info() {
+    cout << "opencv version : " << CV_VERSION << endl;
+}
+
 void printUsage() {
-    cout << "-----------------------------------" << endl;
-    cout << "version info: " << endl;
-    cout << "- OpenCV: " << CV_VERSION << endl;
     cout << "-----------------------------------" << endl;
     cout << "Usage:" << endl;
     cout << "1. Run gTest." << endl;
