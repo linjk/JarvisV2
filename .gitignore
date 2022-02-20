@@ -8,4 +8,5 @@ target/
 cmake-build-debug/
 ControlCenter/Nacos/data/
 ControlCenter/Nacos/logs
+__pycache__/
 
