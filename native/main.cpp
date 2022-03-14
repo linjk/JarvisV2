@@ -9,36 +9,41 @@
 //#include "utils/mqtt_util.hpp"
 
 int main(int argc, char* argv[]) {
-    print_system_info();
-    if (2 == argc) {
-        int selection;
-        istringstream params(argv[1]);
-        if (!(params >> selection)) {
-            cerr << "Invalid input selection 「" << argv[1] << "」" << endl;
-            printUsage();
-        }
-
-        switch (selection) {
+    system_init();
+    int input;
+    usage();
+    cin >> input;
+    while (input != 0) {
+        switch (input) {
             case 1:
-                testing::InitGoogleTest();
-                return RUN_ALL_TESTS();
-            case 2:
                 cout << "N/A." << endl;
                 break;
             default:
-                printUsage();
+                usage();
                 break;
         }
+        cout << "Number to continue or any characters to exit" << endl;
+        usage();
+        cin >> input;
     }
-    printUsage();
+    usage();
     return 0;
 }
 
-void print_system_info() {
-    cout << "opencv version : " << CV_VERSION << endl;
+void system_init() {
+    cout << "System init ..." << endl;
+    cout << " -> opencv version : " << CV_VERSION << endl;
+    cout << "checking system ..." << endl;
+    testing::InitGoogleTest();
+    int test_result = RUN_ALL_TESTS();
+    if (test_result != 0) {
+        cerr << "System check FAILED" << endl;
+        exit(-1);
+    }
+    cout << "Welcome to Jarvis !" << endl;
 }
 
-void printUsage() {
+void usage() {
     cout << "-----------------------------------" << endl;
     cout << "Usage:" << endl;
     cout << "1. Run gTest." << endl;

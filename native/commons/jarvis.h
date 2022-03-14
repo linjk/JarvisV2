@@ -21,7 +21,7 @@ using namespace std;
 using namespace boost;
 using namespace boost::gregorian;
 
-void print_system_info();
-void printUsage();
+void system_init();
+void usage();
 
 #endif //JARVIS_JARVIS_H
