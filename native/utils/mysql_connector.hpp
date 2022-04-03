@@ -7,13 +7,16 @@
 
 #include "../commons/jarvis.h"
 #include <mysql++/mysql++.h>
+#include "json_util.hpp"
 
 using namespace mysqlpp;
 
 class mysql_connector {
 public:
-    explicit mysql_connector(string host = "127.0.0.1", int port = 3306, string account = "root", string password = "root", string database = "jarvis")
-        : host(std::move(host)), port(port), account(std::move(account)), password(std::move(password)), database(std::move(database)) {}
+    explicit mysql_connector(string host = "127.0.0.1", int port = 3306,
+            string account = "root", string password = "root", string database = "jarvis")
+        : host(std::move(host)), port(port),
+        account(std::move(account)), password(std::move(password)), database(std::move(database)) {}
 
     bool connect();
     void connectionInfo();
@@ -91,17 +94,21 @@ vector<Row> mysql_connector::query(const string& sql) {
 }
 
 TEST(mysql_connector, mysql_connector_test) { /* NOLINT */
+    cout << "Test: mysql_connector_test start" << endl;
     char *account, *pwd;
     account = getenv("MYSQL_ACCOUNT");
     pwd = getenv("MYSQL_PASSWORD");
-    mysql_connector mysqlConnector("127.0.0.1", 3308, account, pwd);
+    json_util jsonUtil;
+    string str_host = jsonUtil.read_config("database", "host");
+    string str_port = jsonUtil.read_config("database", "port");
+    mysql_connector mysqlConnector(str_host, atoi(str_port.c_str()), account, pwd);
 
     if (mysqlConnector.connect()) {
         cout << "connect to mysql success." << endl;
         mysqlConnector.connectionInfo();
         vector<Row> rows = mysqlConnector.query("select now() as now;");
-        for (int i = 0; i < rows.size(); i++) {
-            cout << "------> " << rows.at(i)["now"] << endl;
+        for (auto & row : rows) {
+            cout << "query result of mysql server time: " << row["now"] << endl;
         }
         mysqlConnector.disconnect();
         SUCCEED();
@@ -110,6 +117,7 @@ TEST(mysql_connector, mysql_connector_test) { /* NOLINT */
         cerr << "connect to mysql failed." << endl;
         FAIL();
     }
+    cout << "Test: mysql_connector_test end" << endl;
 }
 
 #endif //JARVIS_MYSQL_CONNECTOR_HPP
