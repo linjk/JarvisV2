@@ -4,7 +4,7 @@
 
 #include "commons/jarvis.h"
 #include "utils/mysql_connector.hpp"
-//#include "utils/car_oil_util.hpp"
+#include "utils/car_oil_util.hpp"
 #include "utils/json_util.hpp"
 //#include "utils/mqtt_util.hpp"
 

@@ -29,11 +29,11 @@ private:
 vector<car_oil> car_oil_util::getAll() {
     vector<car_oil> oil_records;
     try {
-        vector<Row> results = sql_connector.query("select * from car_oil limit 2");
-        for (int i = 0; i < results.size(); i++) {
+        vector<Row> results = sql_connector.query("select * from car_oil limit 3");
+        for (auto & result : results) {
             car_oil oilRecord;
-            oilRecord.setOilSummary(results.at(i)["oil_summary"]);
-            oilRecord.setOilDate(from_string(string(results.at(i)["oil_date"])));
+            oilRecord.setOilSummary(result["oil_summary"]);
+            oilRecord.setOilDate(from_string(string(result["oil_date"])));
             oil_records.push_back(oilRecord);
         }
     }
@@ -54,18 +54,23 @@ void car_oil_util::connectMySQL() {
 }
 
 TEST(CarOilRecord, CarOilRecordInit) { /* NOLINT */
+    cout << "Test: CarOilRecordInit start" << endl;
     car_oil_util carOilRecord;
 
     vector<car_oil> r = carOilRecord.getAll();
-    for (int i = 0; i < r.size(); ++i) {
-        cout << "加油日期: " << to_iso_extended_string(r.at(i).getOilDate()) << ", 加油金额: " << r.at(i).getOilSummary() << endl;
+    for (auto & i : r) {
+        cout << "加油日期: " << to_iso_extended_string(i.getOilDate()) << ", 加油金额: " << i.getOilSummary() << endl;
     }
+    cout << "Test += operator ..." << endl;
     car_oil c1 = r.at(0);
     car_oil c2 = r.at(1);
     c1 += c2;
     cout << c1.getOilCnt() << ", " << c1.getOilSummary() << endl;
 
+    cout << "Test double operator ..." << endl;
+    cout << r.at(2) + 10.2 << endl;
     SUCCEED();
+    cout << "Test: CarOilRecordInit end" << endl;
 }
 
 #endif //JARVIS_CAR_OIL_UTIL_HPP

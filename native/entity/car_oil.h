@@ -13,6 +13,10 @@ public:
 
     car_oil& operator += (const car_oil& co);
 
+    operator double() const {
+        return (double)this->oilSummary;
+    }
+
     void setOilSummary(double summary);
     double getOilSummary() const ;
 
