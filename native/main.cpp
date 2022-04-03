@@ -47,5 +47,6 @@ void usage() {
     cout << "-----------------------------------" << endl;
     cout << "Usage:" << endl;
     cout << "1. Run gTest." << endl;
+    cout << "2. Exit system." << endl;
     cout << "-----------------------------------" << endl;
 }

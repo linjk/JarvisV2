@@ -20,7 +20,6 @@ string json_util::read_config(const string &node_name, const string& key_name) {
     const string file_path = "/Users/linjk/Documents/code/java/Jarvis/native/config/jarvis.json";
 
     string result;
-
     ptree root;
     ptree items;
     read_json<ptree>(file_path,root);
@@ -37,10 +36,11 @@ string json_util::read_config(const string &node_name, const string& key_name) {
 }
 
 TEST(json_util, json_util_test) { /* NOLINT */
+    cout << "Test: json_util_test start" << endl;
     json_util jsonUtil;
+    cout << "host: " << jsonUtil.read_config("database", "host") << endl;
 
-    cout << "host: " << jsonUtil.read_config("database", "host");
-
+    cout << "Test: json_util_test end" << endl;
     SUCCEED();
 }
 
