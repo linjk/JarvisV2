@@ -14,12 +14,11 @@ public:
         connectMySQL();
     }
 
+    vector<car_oil> getAll();
+
     ~car_oil_util() {
-        cout << "disconnect mysql." << endl;
         sql_connector.disconnect();
     }
-
-    vector<car_oil> getAll();
 private:
     mysql_connector sql_connector;
 

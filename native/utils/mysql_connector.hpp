@@ -61,6 +61,7 @@ void mysql_connector::connectionInfo() {
 void mysql_connector::disconnect() {
     try {
         if (connection.connected()) {
+            cout << "disconnect mysql." << endl;
             connection.disconnect();
         }
     }
@@ -90,6 +91,7 @@ vector<Row> mysql_connector::query(const string& sql) {
             cout << "#query# Error:" << er.what() << endl;
         }
     }
+    cerr << "Lost connection to mysql! return empty list" << endl;
     return vector<Row>();
 }
 

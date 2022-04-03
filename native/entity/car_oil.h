@@ -17,6 +17,9 @@ public:
         return (double)this->oilSummary;
     }
 
+    long getId() const;
+    void setId(const long _id);
+
     void setOilSummary(double summary);
     double getOilSummary() const ;
 
@@ -26,6 +29,8 @@ public:
     void setOilCnt(float cnt);
     float getOilCnt() const;
 private:
+    // 数据库主键
+    long id{};
     // 加油量
     float oilCnt{};
     // 加油金额
@@ -47,6 +52,14 @@ private:
 
 inline car_oil& car_oil::operator += (const car_oil& co) {
     return __doapl(this, co);
+}
+
+long car_oil::getId() const {
+    this->id;
+}
+
+void car_oil::setId(const long _id) {
+    this->id = _id;
 }
 
 void car_oil::setOilSummary(double summary) {
