@@ -11,36 +11,196 @@ class car_oil {
 public:
     car_oil(): oilDate(date(day_clock::local_day())) {}
 
-    car_oil& operator += (const car_oil& co);
+    car_oil& operator += (const car_oil& co) {
+        return __doapl(this, co);
+    }
 
     operator double() const {
         return (double)this->oilSummary;
     }
 
-    long getId() const;
-    void setId(const long _id);
+    long getId() const {
+        return this->id;
+    }
+    void setId(const long _id) {
+        this->id = _id;
+    }
 
-    void setOilSummary(double summary);
-    double getOilSummary() const ;
+    void setOilDate(const date& oil_date) {
+        this->oilDate = oil_date;
+    }
+    const date& getOilDate() const {
+        return this->oilDate;
+    }
 
-    void setOilDate(date oil_date);
-    date getOilDate() const;
+    void setOilType(const string& _oilType) {
+        this->oilType = _oilType;
+    }
+    const string& getOilType() const {
+        return this->oilType;
+    }
 
-    void setOilCnt(float cnt);
-    float getOilCnt() const;
+    void setOilTarget(const string& _oilTarget) {
+        this->oilTarget = _oilTarget;
+    }
+    const string& getOilTarget() const {
+        return this->oilTarget;
+    }
+
+    void setOilCnt(float cnt) {
+        this->oilCnt = cnt;
+    }
+    const float getOilCnt() const {
+        return this->oilCnt;
+    }
+
+    void setOilSummary(double summary) {
+        this->oilSummary = summary;
+    }
+    const double getOilSummary() const {
+        return this->oilSummary;
+    }
+
+    void setOilPrice(double _price) {
+        this->oilPrice = _price;
+    }
+    const double getOilPrice() const {
+        return this->oilPrice;
+    }
+
+    const long getCurDistance() const {
+        return this->curDistance;
+    }
+    void setCurDistance(long _curDistance) {
+        this->curDistance = _curDistance;
+    }
+
+    const int getDeltaDistance() const {
+        return this->deltaDistance;
+    }
+    void setDeltaDistance(const int _deltaDistance) {
+        this->deltaDistance = _deltaDistance;
+    }
+
+    const float getOilCost() const {
+        return this->oilCost;
+    }
+    void setOilCost(const float _oilCost) {
+        this->oilCost = _oilCost;
+    }
+
+    float getPricePerKm() const {
+        return this->pricePerKm;
+    }
+    const void setPricePerKm(const float _pricePerKm) {
+        this->pricePerKm = _pricePerKm;
+    }
+
+    const bool isFull() const {
+        return this->full;
+    }
+    void setFull(bool _full) {
+        this->full = _full;
+    }
+
+    const string& getCreateUserCode() const {
+        return this->createUserCode;
+    }
+    void setCreateUserCode(const string& _createUserCode) {
+        this->createUserCode = _createUserCode;
+    }
+
+    const date& getCreateTime() const {
+        return this->createTime;
+    }
+    void setCreateTime(const date& _createTime) {
+        this->createTime = _createTime;
+    }
+
+    const string& getUpdateUserCode() const {
+        return this->updateUserCode;
+    }
+    void setUpdateUserCode(const string& _updateUserCode) {
+        this->updateUserCode = _updateUserCode;
+    }
+
+    const date& getUpdateTime() const {
+        return this->updateTime;
+    }
+    void setUpdateTime(const date& _updateTime) {
+        this->updateTime = _updateTime;
+    }
+
+    int getDeleteFlag() const {
+        return this->deleteFlag;
+    }
+    void setDeleteFlag(int _deleteFlag) {
+        this->deleteFlag = _deleteFlag;
+    }
+
+    int getVersion() const {
+        return this->version;
+    }
+    void setVersion(const int _version) {
+        this->version = _version;
+    }
+
+    const string & getRemark() const {
+        return this->remark;
+    }
+    void setRemark(const string& _remark) {
+        this->remark = _remark;
+    }
+
+    const gregorian::days& getDays() const {
+        return this->days;
+    }
+    void setDays(const gregorian::days& _days) {
+        this->days = _days;
+    }
+
 private:
     // 数据库主键
     long id{};
+    // 加油日期
+    date oilDate;
+    // 加油类型
+    string oilType;
+    // 加油目标
+    string oilTarget;
     // 加油量
     float oilCnt{};
     // 加油金额
     double oilSummary{};
-    // 加油日期
-    date oilDate;
-    // 距离上次加油距离天数
-    days days;
+    // 加油费用
+    double oilPrice;
+    // 当前行驶距离
+    long curDistance;
+    // 相比上次，本次行驶的距离
+    int deltaDistance;
+    // 油耗
+    float oilCost;
+    // 每公里油耗
+    float pricePerKm;
     // 是否加满
-    bool is_full{};
+    bool full{};
+    // 记录创建人
+    string createUserCode;
+    // 记录创建时间
+    date createTime;
+    // 记录更新人
+    string updateUserCode;
+    // 记录更新时间
+    date updateTime;
+    // 删除标记
+    int deleteFlag;
+    // 数据版本号
+    int version;
+    // 备注
+    string remark;
+
+    // 【非数据库字段】距离上次加油距离天数
+    days days;
 
     friend car_oil& __doapl(car_oil* ths, const car_oil& co) {
         ths->oilSummary += co.oilSummary;
@@ -49,42 +209,5 @@ private:
         return *ths;
     }
 };
-
-inline car_oil& car_oil::operator += (const car_oil& co) {
-    return __doapl(this, co);
-}
-
-long car_oil::getId() const {
-    this->id;
-}
-
-void car_oil::setId(const long _id) {
-    this->id = _id;
-}
-
-void car_oil::setOilSummary(double summary) {
-    this->oilSummary = summary;
-}
-
-void car_oil::setOilDate(date oil_date) {
-    this->oilDate = oil_date;
-}
-
-date car_oil::getOilDate() const {
-    return this->oilDate;
-}
-
-void car_oil::setOilCnt(float cnt) {
-    this->oilCnt = cnt;
-}
-
-float car_oil::getOilCnt() const {
-    return this->oilCnt;
-}
-
-double car_oil::getOilSummary() const {
-    return this->oilSummary;
-}
-
 
 #endif //JARVIS_CAR_OIL_H
