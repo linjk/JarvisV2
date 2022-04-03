@@ -50,39 +50,39 @@ public:
     void setOilCnt(float cnt) {
         this->oilCnt = cnt;
     }
-    const float getOilCnt() const {
+    float getOilCnt() const {
         return this->oilCnt;
     }
 
     void setOilSummary(double summary) {
         this->oilSummary = summary;
     }
-    const double getOilSummary() const {
+    double getOilSummary() const {
         return this->oilSummary;
     }
 
     void setOilPrice(double _price) {
         this->oilPrice = _price;
     }
-    const double getOilPrice() const {
+    double getOilPrice() const {
         return this->oilPrice;
     }
 
-    const long getCurDistance() const {
+    long getCurDistance() const {
         return this->curDistance;
     }
     void setCurDistance(long _curDistance) {
         this->curDistance = _curDistance;
     }
 
-    const int getDeltaDistance() const {
+    int getDeltaDistance() const {
         return this->deltaDistance;
     }
     void setDeltaDistance(const int _deltaDistance) {
         this->deltaDistance = _deltaDistance;
     }
 
-    const float getOilCost() const {
+    float getOilCost() const {
         return this->oilCost;
     }
     void setOilCost(const float _oilCost) {
@@ -92,11 +92,11 @@ public:
     float getPricePerKm() const {
         return this->pricePerKm;
     }
-    const void setPricePerKm(const float _pricePerKm) {
+    void setPricePerKm(const float _pricePerKm) {
         this->pricePerKm = _pricePerKm;
     }
 
-    const bool isFull() const {
+    bool isFull() const {
         return this->full;
     }
     void setFull(bool _full) {
