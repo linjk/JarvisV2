@@ -21,8 +21,7 @@ public class TestJedis {
 
     @Before
     public void testInit() {
-        jedis = new Jedis("127.0.0.1", 6379);
-        jedis.auth("xxxx");
+        jedis = JedisPoolCfg.getJedis();
         // 检测是否连接redis成功
         String pong = jedis.ping();
         System.out.println("pong = " + pong);
