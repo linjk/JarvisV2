@@ -4,6 +4,11 @@
 >
 > @email: linjk121@163.com
 
+# Version
+
+> spring boot     2.3.2.RELEASE
+> disruptor       3.3.2
+
 # How To Start Jarvis
 
 > Folder: Jarvis/ControlCenter
