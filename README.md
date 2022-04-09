@@ -21,7 +21,7 @@
     `/Users/linjk/Documents/usr/services/redis-6.2.5/src/redis-server /Users/linjk/Documents/code/java/Jarvis/ControlCenter/conf/redis/redis.conf`
     
     > Test Connection
-    `/Users/linjk/Documents/usr/services/redis-6.2.5/src/redis-cli -h 127.0.0.1 -p 6379`
+    `/Users/linjk/Documents/usr/services/redis-6.2.5/src/redis-cli -h 127.0.0.1 -p 6379 -a {你的密码}`
     
                                                                                                                                                                                     
                                                                                                                                                                                     
