@@ -6,6 +6,7 @@
 #include "utils/mysql_connector.hpp"
 #include "utils/car_oil_util.hpp"
 #include "utils/json_util.hpp"
+#include "utils/selection_sort_util.hpp"
 //#include "utils/mqtt_util.hpp"
 
 int main(int argc, char* argv[]) {
