@@ -23,7 +23,7 @@ public class JedisPoolCfg {
         // 等待时间
         jedisPoolConfig.setMaxWaitMillis(100);
         jedisPool = new JedisPool(jedisPoolConfig,
-                "127.0.0.1", 6379, 100, "xxx");
+                "127.0.0.1", 6379, 100, "123456");
     }
 
     public static Jedis getJedis() {
