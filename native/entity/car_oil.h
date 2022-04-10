@@ -11,6 +11,11 @@ class car_oil {
 public:
     car_oil(): oilDate(date(day_clock::local_day())) {}
 
+    friend ostream& operator << (ostream& os, const car_oil& co) {
+        os << "car_oil: " << co.getOilDate() << endl;
+        return os;
+    }
+
     car_oil& operator += (const car_oil& co) {
         return __doapl(this, co);
     }
