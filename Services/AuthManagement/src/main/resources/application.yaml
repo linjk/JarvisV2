@@ -1,0 +1,51 @@
+server:
+  port: 4001
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        service: auth-service
+      server-addr: localhost:8848
+  datasource:
+    url: jdbc:mysql://localhost:3308/jarvis
+    username: ${MYSQL_ACCOUNT}
+    password: ${MYSQL_PASSWORD}
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    password: 123456
+    jedis:
+      pool:
+        max-active: 5
+        max-idle: 5
+        min-idle: 0
+        max-wait: 100
+  application:
+    name: auth-service
+  swagger:
+    base-package: cn.linjk.jarvis.authmanagement
+    title: Jarvis认证中心
+
+client:
+  oauth2:
+    client-id: jarvis-client # 客户端标识 ID
+    secret: 123321abc. # 客户端安全码
+    grant_types:
+      - password
+      - refresh_token
+    # token 有效时间，单位秒
+    token-validity-time: 3600
+    refresh-token-validity-time: 3600
+    # 客户端访问范围
+    scopes:
+      - api
+      - all
+
+# 指标监控健康检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # 暴露的端点
