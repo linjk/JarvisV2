@@ -17,6 +17,7 @@
         <module>MessageService</module>
         <module>SkillService</module>
         <module>ProductService</module>
+        <module>AuthManagement</module>
     </modules>
 
     <dependencies>
