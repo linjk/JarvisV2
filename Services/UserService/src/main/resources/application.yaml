@@ -1,10 +1,10 @@
 server:
-  port: 6000
+  port: 5001
 
 dubbo:
   application:
-    name: user-center
-    id: user-center
+    name: user-service
+    id: user-service
   registry:
     address: nacos://localhost:8848
   protocol:

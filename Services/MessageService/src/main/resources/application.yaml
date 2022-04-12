@@ -23,12 +23,12 @@ spring:
         min-idle: 0
         max-wait: 100
   application:
-    name: message-center
+    name: message-service
 
 dubbo:
   application:
-    name: message-center
-    id: message-center
+    name: message-service
+    id: message-service
   registry:
     address: nacos://localhost:8848
   protocol:

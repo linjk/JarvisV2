@@ -9,6 +9,6 @@ spring:
         file-extension: yaml
         server-addr: localhost:8848
   application:
-    name: user-center
+    name: user-service
   profiles:
     active: sit
