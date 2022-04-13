@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>UserService</artifactId>
+    <artifactId>DeviceService</artifactId>
     <packaging>jar</packaging>
-    <description>用户信息服务</description>
+    <description>设备服务</description>
 </project>

@@ -2,13 +2,13 @@ spring:
   cloud:
     nacos:
       discovery:
-        service: user-service
+        service: device-service
       server-addr: localhost:8848
       config:
         enabled: true
         file-extension: yaml
         server-addr: localhost:8848
   application:
-    name: user-service
+    name: device-service
   profiles:
     active: sit
