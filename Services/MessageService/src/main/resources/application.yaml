@@ -27,10 +27,10 @@ spring:
 
 dubbo:
   application:
-    name: message-service
-    id: message-service
+    name: ${spring.application.name}
+    id: ${spring.application.name}
   registry:
     address: nacos://localhost:8848
   protocol:
     name: dubbo
-    port: 20448
+    port: 9031

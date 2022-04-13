@@ -1,6 +1,10 @@
 package cn.linjk.jarvis.message.rest;
 
+import cn.linjk.jarvis.api.message.IDeviceInfoApi;
+import cn.linjk.jarvis.common.tables.DeviceInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -13,8 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class MessageRest {
-    @GetMapping("/msg-test")
-    public String test() {
-        return "message";
+    @Autowired private IDeviceInfoApi deviceInfoApi;
+    @GetMapping("/msg-test/{id}")
+    public DeviceInfo test(@PathVariable Long id) {
+        return deviceInfoApi.getDeviceInfo(id);
     }
 }
