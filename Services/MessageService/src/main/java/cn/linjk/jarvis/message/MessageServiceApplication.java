@@ -1,6 +1,6 @@
 package cn.linjk.jarvis.message;
 
-import cn.linjk.jarvis.api.message.IDeviceInfoApi;
+import cn.linjk.jarvis.apis.IDeviceInfoApi;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;

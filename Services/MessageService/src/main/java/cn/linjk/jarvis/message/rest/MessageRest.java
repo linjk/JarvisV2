@@ -1,6 +1,6 @@
 package cn.linjk.jarvis.message.rest;
 
-import cn.linjk.jarvis.api.message.IDeviceInfoApi;
+import cn.linjk.jarvis.apis.IDeviceInfoApi;
 import cn.linjk.jarvis.common.tables.DeviceInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

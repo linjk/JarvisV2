@@ -1,6 +1,6 @@
 package cn.linjk.jarvis.device.service;
 
-import cn.linjk.jarvis.api.message.IDeviceInfoApi;
+import cn.linjk.jarvis.apis.IDeviceInfoApi;
 import cn.linjk.jarvis.common.tables.DeviceInfo;
 import org.apache.dubbo.config.annotation.DubboService;
 
