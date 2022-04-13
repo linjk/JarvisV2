@@ -12,6 +12,8 @@ dubbo:
     port: 50011
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
   cloud:
     sentinel:
       transport:
@@ -26,6 +28,17 @@ spring:
     host: localhost
     port: 6379
     database: 0
+
+oauth2:
+  client:
+    client-id: jarvis-client
+    secret: 123321abc.
+    grant_type: password
+    scope: api
+
+service:
+  name:
+    jarvis-oauth-server: http://auth-service/
 
 management:
   endpoints:
