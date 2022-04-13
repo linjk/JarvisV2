@@ -1,6 +1,5 @@
 package cn.linjk.jarvis.user.rest;
 
-import cn.linjk.jarvis.api.message.IMessageApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 @RestController
 public class UserRest {
-    @Autowired private IMessageApi messageApi;
 
     @Value("${version: null}") private String version;
 
@@ -27,9 +25,4 @@ public class UserRest {
         return version;
     }
 
-    @GetMapping("/user-test")
-    public String getMessage() {
-        boolean result = messageApi.sendMessage(1, "test");
-        return result ? "success" : "fail";
-    }
 }
