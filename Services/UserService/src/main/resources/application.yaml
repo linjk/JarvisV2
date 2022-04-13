@@ -3,12 +3,13 @@ server:
 
 dubbo:
   application:
-    name: user-service
-    id: user-service
+    name: ${spring.application.name}
+    id: ${spring.application.name}
   registry:
     address: nacos://localhost:8848
   protocol:
     name: dubbo
+    port: 50011
 
 spring:
   cloud:
