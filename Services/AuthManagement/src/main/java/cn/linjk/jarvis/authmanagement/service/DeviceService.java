@@ -9,7 +9,7 @@ package cn.linjk.jarvis.authmanagement.service;
  * @description: 登录校验
  */
 
-import cn.linjk.jarvis.authmanagement.repo.DeviceInfoRepo;
+import cn.linjk.jarvis.repos.DeviceInfoRepo;
 import cn.linjk.jarvis.common.bean.SignInIdentity;
 import cn.linjk.jarvis.common.tables.DeviceInfo;
 import cn.linjk.jarvis.common.util.AssertUtil;

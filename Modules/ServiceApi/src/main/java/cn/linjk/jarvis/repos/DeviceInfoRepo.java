@@ -1,4 +1,4 @@
-package cn.linjk.jarvis.authmanagement.repo;
+package cn.linjk.jarvis.repos;
 
 import cn.linjk.jarvis.common.tables.DeviceInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
