@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>UserService</module>
+        <module>DeviceService</module>
         <module>MessageService</module>
         <module>SkillService</module>
         <module>ProductService</module>

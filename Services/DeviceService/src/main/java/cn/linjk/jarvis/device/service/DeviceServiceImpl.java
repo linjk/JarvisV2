@@ -1,4 +1,4 @@
-package cn.linjk.jarvis.user.service;
+package cn.linjk.jarvis.device.service;
 
 import cn.linjk.jarvis.api.message.IDeviceInfoApi;
 import cn.linjk.jarvis.common.tables.DeviceInfo;

@@ -1,4 +1,4 @@
-package cn.linjk.jarvis.user.bean;
+package cn.linjk.jarvis.device.bean;
 
 import lombok.Getter;
 import lombok.Setter;

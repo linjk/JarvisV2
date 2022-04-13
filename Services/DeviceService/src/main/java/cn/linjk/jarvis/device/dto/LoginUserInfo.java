@@ -1,4 +1,4 @@
-package cn.linjk.jarvis.user.dto;
+package cn.linjk.jarvis.device.dto;
 
 import lombok.Getter;
 import lombok.Setter;

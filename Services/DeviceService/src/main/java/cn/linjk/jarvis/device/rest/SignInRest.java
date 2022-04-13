@@ -1,13 +1,13 @@
-package cn.linjk.jarvis.user.rest;
+package cn.linjk.jarvis.device.rest;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.linjk.jarvis.common.bean.Constant;
 import cn.linjk.jarvis.common.bean.ResultInfo;
 import cn.linjk.jarvis.common.util.AssertUtil;
 import cn.linjk.jarvis.common.util.ResultInfoUtil;
-import cn.linjk.jarvis.user.bean.OAuthUserInfo;
-import cn.linjk.jarvis.user.config.OAuth2ClientConfiguration;
-import cn.linjk.jarvis.user.dto.LoginUserInfo;
+import cn.linjk.jarvis.device.bean.OAuthUserInfo;
+import cn.linjk.jarvis.device.config.OAuth2ClientConfiguration;
+import cn.linjk.jarvis.device.dto.LoginUserInfo;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
