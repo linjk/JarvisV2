@@ -28,6 +28,23 @@ public:
             swap(arr[i], arr[minIndex]);
         }
     }
+    /**
+     * 插入排序，复杂度：O(n^2)
+     * @param arr 数组
+     * @param n 数组大小
+     */
+    static void insertionSort(T arr[], int n) {
+        for (int i = 1; i < n; i++) {
+            T temp = arr[i];
+            // j用于存放temp元素应该插入的位置
+            int j;
+            // 寻找元素arr[i]合适的插入位置
+            for (j = i; j > 0 && arr[j-1] > temp; j--) {
+                arr[j] = arr[j-1];
+            }
+            arr[j] = temp;
+        }
+    }
 
     static T* generateRandomArray(int num, int range_left, int range_right) {
         assert(range_left <= range_right);
@@ -41,11 +58,34 @@ public:
         return arr;
     }
 
+    static T* generateNearlyOrderArray(int num, int swap_times) {
+        // 按序生成数组
+        int *arr = new int[num];
+        for (int i = 0; i < num; i++) {
+            arr[i] = i;
+        }
+        // 随机种子设置
+        srand(time(NULL));
+        // 随机打乱，但整体近似有序
+        for (int i  = 0; i < swap_times; i++) {
+            int x = rand() % num;
+            int y = rand() % num;
+            swap(arr[x], arr[y]);
+        }
+        return arr;
+    }
+
     static void print_arr(const T a[], int num) {
         for(int i = 0; i < num; i++) {
             cout << a[i] << " ";
         }
         cout << endl;
+    }
+
+    static T* copy_arr(const T a[], int num) {
+        int* new_arr = new T[num];
+        copy(a, a+num, new_arr);
+        return new_arr;
     }
 
     /**
@@ -74,8 +114,13 @@ TEST(sort_util, sort_util_test) { /* NOLINT */
     int arr_size = 1000;
     cout << "arr_size: " << arr_size << endl;
     int* a = sort_util<int>::generateRandomArray(arr_size, 0, arr_size);
+    int* b = sort_util<int>::copy_arr(a, arr_size);
+
     sort_util<int>::benchmark("选择排序", sort_util<int>::selectionSort, a, arr_size);
+    sort_util<int>::benchmark("插入排序", sort_util<int>::insertionSort, b, arr_size);
+
     delete[] a;
+    delete[] b;
     cout << "Test: sort_util_test end" << endl;
 }
 
