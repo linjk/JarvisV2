@@ -19,9 +19,8 @@
 
         <dependency>
             <groupId>cn.linjk.jarvis</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>ServiceApi</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
