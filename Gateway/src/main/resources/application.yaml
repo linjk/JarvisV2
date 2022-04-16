@@ -1,0 +1,58 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: jarvis-gateway
+  datasource:
+    url: jdbc:log4jdbc:mysql://localhost:3308/jarvis?useUnicode=true&characterEncoding=utf-8
+    username: ${MYSQL_ACCOUNT}
+    password: ${MYSQL_PASSWORD}
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: net.sf.log4jdbc.DriverSpy
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+      password: 123456
+      jedis:
+        pool:
+          max-active: 5
+          max-idle: 5
+          min-idle: 0
+          max-wait: 100
+  cloud:
+    nacos:
+      discovery:
+        service: ${spring.application.name}
+      server-addr: localhost:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true               # 开启配置注册中心进行路由功能
+          lower-case-service-id: true # 服务名称转小写
+      routes:
+        - id: device-service
+          uri: lb://device-service
+          predicates:
+            - Path=/api-device/**
+          filters:
+            - StripPrefix=1
+
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api-auth/**
+          filters:
+            - StripPrefix=1
+
+secure:
+  ignore:
+    urls: # 配置白名单路径
+      - /actuator/**
+      - /api-auth/oauth/**
+      - /api-device/signin
+
+logging:
+  pattern:
+    console: '%d{HH:mm:ss} [%thread] %-5level %logger{50} - %msg%n'
