@@ -2,13 +2,20 @@ spring:
   cloud:
     nacos:
       discovery:
-        service: device-service
+        service: ${spring.application.name}
       server-addr: localhost:8848
       config:
         enabled: true
         file-extension: yaml
         server-addr: localhost:8848
+        shared-configs[0]:
+          dataId: redis.yaml
+          refresh: true
+        shared-configs[1]:
+          dataId: mysql.yaml
+          refresh: true
+
   application:
     name: device-service
   profiles:
-    active: sit
+    active: dev
