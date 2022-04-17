@@ -45,6 +45,19 @@ public:
             arr[j] = temp;
         }
     }
+    // 对arr[start...end]的范围进行插入排序
+    static void insertionSort(T arr[], int start, int end) {
+        for (int i = start+1; i <= end; i++) {
+            T temp = arr[i];
+            // j用于存放temp元素应该插入的位置
+            int j;
+            // 寻找元素arr[i]合适的插入位置
+            for (j = i; j > start && arr[j-1] > temp; j--) {
+                arr[j] = arr[j-1];
+            }
+            arr[j] = temp;
+        }
+    }
 
     /**
      * 归并排序，复杂度：O(N*logN)
@@ -120,14 +133,16 @@ public:
 private:
     // 对arr[start...end]的范围进行排序
     static void m_merge_sort(int arr[], int start, int end) {
-        if (start >= end) {
-            return;
+        if (end - start <= 15) {
+            // 数据量小，直接插入排序
+            insertionSort(arr, start, end);
         }
 
         int middle_position = (start + end) / 2;
         m_merge_sort(arr, start, middle_position);
         m_merge_sort(arr, middle_position+1, end);
-        m_merge(arr, start, middle_position, end);
+        if (arr[middle_position] > arr[middle_position+1])
+            m_merge(arr, start, middle_position, end);
     }
 
     // 对arr[start...middle_position]和arr[middle_position+1...end]两部分数组进行归并
