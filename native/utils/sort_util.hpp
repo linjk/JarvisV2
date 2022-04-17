@@ -67,6 +67,12 @@ public:
     static void mergeSort(T arr[], int n) {
         m_merge_sort(arr, 0, n-1);
     }
+    static void mergeSortV2(T arr[], int n) {
+        for (int size = 1; size <= n; size += size)
+            for (int i = 0; i+size < n; i += size+size)
+                // 对arr[i...i+size-1]和arr[i+size...i+2*size-1]两部分数组进行归并
+                m_merge_sort(arr, i, i+size-1, min(i+size+size-1, n-1));
+    }
 
     static T* generateRandomArray(int num, int range_left, int range_right) {
         assert(range_left <= range_right);
