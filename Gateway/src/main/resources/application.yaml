@@ -52,6 +52,7 @@ secure:
       - /actuator/**
       - /api-auth/oauth/**
       - /api-device/signin
+      - /api-device/send
 
 logging:
   pattern:
