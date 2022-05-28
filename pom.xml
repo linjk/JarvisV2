@@ -14,6 +14,7 @@
         <module>Modules</module>
         <module>Services</module>
         <module>Gateway</module>
+        <module>Cmdb</module>
     </modules>
 
     <properties>
