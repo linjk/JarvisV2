@@ -6,8 +6,11 @@
 
 # Version
 
-> spring boot     2.3.2.RELEASE
-> disruptor       3.3.2
+> spring cloud alibaba 2.2.5.RELEASE
+>
+> spring boot          2.3.2.RELEASE
+>
+> disruptor            3.3.2
 
 # How To Start Jarvis
 
@@ -21,8 +24,11 @@
 
     `java -Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.8.0.jar`
     
+    默认的用户名和密码均为: sentinel
+    
 - Step3: Start Redis
     
+    如下为单节点，已弃用，后续使用容器的三主三从的Redis集群模式：
     `/Users/linjk/Documents/usr/services/redis-6.2.5/src/redis-server /Users/linjk/Documents/code/java/Jarvis/ControlCenter/conf/redis/redis.conf`
     
     > Test Connection
