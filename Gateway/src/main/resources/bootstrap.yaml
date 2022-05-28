@@ -11,11 +11,7 @@ spring:
         shared-configs[0]:
           dataId: redis-cluster.yaml
           refresh: true
-        shared-configs[1]:
-          dataId: mysql.yaml
-          refresh: true
-
   application:
-    name: device-service
+    name: jarvis-gateway
   profiles:
     active: dev
