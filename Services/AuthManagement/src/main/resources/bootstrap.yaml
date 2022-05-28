@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        service: ${spring.application.name}
+      server-addr: localhost:8848
+      config:
+        enabled: true
+        file-extension: yaml
+        server-addr: localhost:8848
+        shared-configs[0]:
+          dataId: redis-cluster.yaml
+          refresh: true
+  application:
+    name: auth-service
+  profiles:
+    active: dev

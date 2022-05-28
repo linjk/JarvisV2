@@ -2,30 +2,12 @@ server:
   port: 4001
 
 spring:
-  cloud:
-    nacos:
-      discovery:
-        service: auth-service
-      server-addr: localhost:8848
   datasource:
     url: jdbc:log4jdbc:mysql://localhost:3308/jarvis?useUnicode=true&characterEncoding=utf-8
     username: ${MYSQL_ACCOUNT}
     password: ${MYSQL_PASSWORD}
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: net.sf.log4jdbc.DriverSpy
-  redis:
-    host: localhost
-    port: 6379
-    database: 0
-    password: 123456
-    jedis:
-      pool:
-        max-active: 5
-        max-idle: 5
-        min-idle: 0
-        max-wait: 100
-  application:
-    name: auth-service
   swagger:
     base-package: cn.linjk.jarvis.authmanagement
     title: Jarvis认证中心
