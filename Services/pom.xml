@@ -18,6 +18,7 @@
         <module>SkillService</module>
         <module>ProductService</module>
         <module>AuthManagement</module>
+        <module>Search</module>
     </modules>
 
     <dependencies>
