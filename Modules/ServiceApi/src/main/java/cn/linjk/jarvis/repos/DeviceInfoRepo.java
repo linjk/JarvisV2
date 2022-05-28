@@ -17,4 +17,7 @@ import org.springframework.stereotype.Repository;
 public interface DeviceInfoRepo extends JpaRepository<DeviceInfo, Long> {
     @Query(value = "select * from device_info where device_name = ?1", nativeQuery = true)
     DeviceInfo findDeviceByDeviceNameame(String deviceName);
+
+    @Query(value = "select * from device_info where id = ?1", nativeQuery = true)
+    DeviceInfo findDeviceByDeviceId(Long id);
 }

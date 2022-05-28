@@ -12,4 +12,6 @@ import cn.linjk.jarvis.common.tables.DeviceInfo;
  */
 public interface IDeviceInfoApi {
     DeviceInfo getDeviceInfo(Long id);
+
+    DeviceInfo registerDevice(DeviceInfo deviceInfo);
 }

@@ -1,5 +1,7 @@
 package cn.linjk.jarvis.common.tables;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -61,6 +63,9 @@ public class DeviceInfo implements Serializable {
 
     @Column(name = "remark")
     private String remark;
+
+    @JsonIgnore
+    private String verifyCode;
 
     public Long getId() {
         return id;
@@ -172,5 +177,13 @@ public class DeviceInfo implements Serializable {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getVerifyCode() {
+        return verifyCode;
+    }
+
+    public void setVerifyCode(String verifyCode) {
+        this.verifyCode = verifyCode;
     }
 }

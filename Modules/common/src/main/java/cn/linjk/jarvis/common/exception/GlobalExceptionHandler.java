@@ -23,20 +23,17 @@ import java.util.Map;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    @Resource private HttpServletRequest request;
 
     @ExceptionHandler(ParameterException.class)
     public ResultInfo<Map<String, String>> handlerParameterException(ParameterException ex) {
-        String path = request.getRequestURI();
-        ResultInfo<Map<String, String>> resultInfo = ResultInfoUtil.buildError(ex.getErrorCode(), ex.getMessage(), path);
+        ResultInfo<Map<String, String>> resultInfo = ResultInfoUtil.buildError(ex.getErrorCode(), ex.getMessage(), "");
         return resultInfo;
     }
 
     @ExceptionHandler(Exception.class)
     public ResultInfo<Map<String, String>> handlerException(Exception ex) {
         log.info("未知异常：{}", ex);
-        String path = request.getRequestURI();
-        ResultInfo<Map<String, String>> resultInfo = ResultInfoUtil.buildError(Constant.ERROR_CODE, ex.getMessage(), path);
+        ResultInfo<Map<String, String>> resultInfo = ResultInfoUtil.buildError(Constant.ERROR_CODE, ex.getMessage(), "");
         return resultInfo;
     }
 }

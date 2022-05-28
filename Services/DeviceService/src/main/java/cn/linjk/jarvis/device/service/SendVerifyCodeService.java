@@ -33,6 +33,11 @@ public class SendVerifyCodeService {
         redisTemplate.opsForValue().set(key, code, 60, TimeUnit.SECONDS);
     }
 
+    public String getVerifyCodeByPhone(String phone) {
+        String key = RedisKeyConstant.VERIFY_CODE.getKey() + phone;
+        return redisTemplate.opsForValue().get(key);
+    }
+
     private boolean checkCodeIsExpired(String phone) {
         String key = RedisKeyConstant.VERIFY_CODE.getKey() + phone;
         String code = redisTemplate.opsForValue().get(key);

@@ -1,8 +1,10 @@
 package cn.linjk.jarvis.device.rest;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.linjk.jarvis.apis.IDeviceInfoApi;
 import cn.linjk.jarvis.common.bean.Constant;
 import cn.linjk.jarvis.common.bean.ResultInfo;
+import cn.linjk.jarvis.common.tables.DeviceInfo;
 import cn.linjk.jarvis.common.util.AssertUtil;
 import cn.linjk.jarvis.common.util.ResultInfoUtil;
 import cn.linjk.jarvis.device.bean.OAuthUserInfo;
@@ -10,18 +12,21 @@ import cn.linjk.jarvis.device.config.OAuth2ClientConfiguration;
 import cn.linjk.jarvis.device.dto.LoginUserInfo;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.http.client.support.BasicAuthenticationInterceptor;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 /**
  * Copyright 1990-2020 LinJK
@@ -40,10 +45,20 @@ public class SignInRest {
     private String oauthServerName;
     @Resource private OAuth2ClientConfiguration oAuth2ClientConfiguration;
     @Resource private HttpServletRequest request;
+    @Resource private IDeviceInfoApi deviceInfoApi;
 
     @GetMapping("signin")
     public ResultInfo signIn(String account, String password) {
         return this.signIn(account, password, request.getServletPath());
+    }
+
+    @GetMapping("deviceExists/{id}")
+    public ResultInfo deviceExists(@PathVariable("id") Long id) {
+        DeviceInfo deviceInfo = deviceInfoApi.getDeviceInfo(id);
+        if (Objects.nonNull(deviceInfo)) {
+            return ResultInfoUtil.buildSuccess(request.getServletPath(), deviceInfoApi.getDeviceInfo(id));
+        }
+        return ResultInfoUtil.buildError(1, "设备ID不存在", request.getServletPath());
     }
 
     /**
