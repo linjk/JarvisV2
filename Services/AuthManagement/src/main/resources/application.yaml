@@ -11,6 +11,12 @@ spring:
   swagger:
     base-package: cn.linjk.jarvis.authmanagement
     title: Jarvis认证中心
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+      filter:
+        enabled: true
 
 client:
   oauth2:

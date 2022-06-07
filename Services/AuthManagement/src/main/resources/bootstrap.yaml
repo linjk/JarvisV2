@@ -11,6 +11,8 @@ spring:
         shared-configs[0]:
           dataId: redis-cluster.yaml
           refresh: true
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: auth-service
   profiles:
