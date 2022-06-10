@@ -1,10 +1,10 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
-import HelloWorld from '../components/HelloWorld.vue'
+import index from '../layout/index.vue'
 
 const routes : Array<RouteRecordRaw> = [
     {
         path: '/',
-        component: HelloWorld
+        component: index
     }
 ]
 
