@@ -5,7 +5,7 @@
 
 <template>
   <el-container class="layout">
-      <el-aside class="aside" width="200px"><Menu></Menu></el-aside>
+      <el-aside class="aside" width="auto"><Menu></Menu></el-aside>
       <el-container>
         <el-header class="header"><Header></Header></el-header>
         <el-main class="main"></el-main>
@@ -21,7 +21,7 @@
     
 }
 .aside{
-    
+    background-color: #304156;
 }
 
 .main{
