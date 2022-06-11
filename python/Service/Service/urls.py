@@ -15,9 +15,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title='TestPlatform',
+        default_version='v1',
+        description='测试管理平台接口',
+        terms_of_service='',
+        contact=openapi.Contact(email='linjk121@163.com'),
+        license=openapi.License(name='BSD License'),
+    ),
+    public=True,
+    #permission_classes=(permissions.AllowAny,)
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # http://127.0.0.1:8000/api/testplatform/v1/
     path('api/testplatform/v1/', include('test_platform.urls')),
+    path('api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]

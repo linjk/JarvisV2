@@ -7,6 +7,10 @@ from test_platform.paginations import CustomPageNumberPagination
 
 
 class SystemInfoViewSet(ModelViewSet):
+    """
+        create:
+        注册新系统
+    """
     queryset = SystemInfo.objects.all()
     serializer_class = SystemInfoSerializer
     # 过滤
