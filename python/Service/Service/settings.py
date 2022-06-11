@@ -22,7 +22,7 @@ sys.path.append(os.path.join(BASE_DIR, 'Service/apps'))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%*u3ljfvutor+a(04dglgj)aiw3l_^u_+dh*1zklefy-4_ih!8'
+SECRET_KEY = os.getenv('JAVIS_DJANGDO_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
