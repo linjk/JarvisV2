@@ -1,16 +1,25 @@
 <script lang="ts" setup>
+import {ref, computed} from 'vue'
 import menuLogoVue from './menuLogo.vue';
 import MenuItem from './menuItem.vue';
+import { useStore } from 'vuex'
+
+const store = useStore();
+
+const isCollapse = computed(() => {
+  return store.getters['getCollapse']
+})
 </script>
 
 <template>
-    <menuLogoVue class="layout-logo"></menuLogoVue>
+    <menuLogoVue v-if="!isCollapse" class="layout-logo"></menuLogoVue>
     <!-- 侧边导航栏 -->
     <el-menu
         active-text-color="#ffd04b"
         background-color="#304156"
         default-active="2"
         text-color="#fff"
+        :collapse = "isCollapse"
         class="el-menu-vertical-demo">
         <MenuItem></MenuItem>
     </el-menu>

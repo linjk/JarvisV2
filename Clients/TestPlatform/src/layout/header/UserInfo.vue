@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+defineProps<{userName: string}>();
 </script>
 
 <template>
@@ -7,7 +8,7 @@
         <el-icon>
             <component class="icons" is="UserFilled"></component>
         </el-icon>
-        Dropdown List
+        {{userName}}
         <el-icon class="el-icon--right">
             <arrow-down />
         </el-icon>

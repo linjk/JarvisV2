@@ -9,7 +9,7 @@ import UserInfo from './UserInfo.vue'
         <Collapse></Collapse>    
         <BraedCum></BraedCum>
     </div>
-    <UserInfo></UserInfo>
+    <UserInfo userName="Hi"></UserInfo>
 </template>
 
 <style scoped>

@@ -17,14 +17,14 @@
             },
             children: [
                 {
-                    path: '/manage',
+                    path: '/system/manage',
                     meta: {
                         title: '系统维护',
                         icon: 'Edit'
                     }
                 },
                 {
-                    path: '/manageLog',
+                    path: '/system/manageLog',
                     meta: {
                         title: '维护日志',
                         icon: 'Document'
@@ -68,7 +68,7 @@
 <template>
     <template v-for="mn in menuList">
         <el-sub-menu v-if="mn.children && mn.children.length>0" :index="mn.path">
-            <template #title>
+            <template #title style="padding-left: 40px">
                 <el-icon>
                     <component class="icons" :is="mn.meta.icon"></component>
                 </el-icon>
@@ -97,6 +97,6 @@
 .el-menu-item {
     display: block;
     text-align: center;
-    padding-left: 80px;
+    padding-right: 80px;
 }    
 </style>
