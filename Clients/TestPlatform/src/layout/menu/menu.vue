@@ -20,7 +20,8 @@ const isCollapse = computed(() => {
         default-active="2"
         text-color="#fff"
         :collapse = "isCollapse"
-        class="el-menu-vertical-demo">
+        class="el-menu-vertical-demo"
+        router>
         <MenuItem></MenuItem>
     </el-menu>
 </template>
