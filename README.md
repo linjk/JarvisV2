@@ -8,6 +8,8 @@
 
 > spring cloud alibaba 2.2.5.RELEASE
 >
+> Nacos                1.4.1
+>
 > spring boot          2.3.2.RELEASE
 >
 > disruptor            3.3.2
