@@ -6,13 +6,15 @@
 
 # Version
 
-> spring cloud alibaba 2.2.5.RELEASE
+> JDK                  openjdk version "14.0.2" 2020-07-14
+>
+> Spring cloud alibaba 2.2.5.RELEASE
 >
 > Nacos                1.4.1
 >
-> spring boot          2.3.2.RELEASE
+> Spring boot          2.3.2.RELEASE
 >
-> disruptor            3.3.2
+> Disruptor            3.3.2
 
 # How To Start Jarvis
 
