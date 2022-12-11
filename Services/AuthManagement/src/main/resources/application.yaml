@@ -1,5 +1,5 @@
 server:
-  port: ${random.int[1024, 9216]}
+  port: ${random.int[1024,9216]}
 
 spring:
   datasource:
