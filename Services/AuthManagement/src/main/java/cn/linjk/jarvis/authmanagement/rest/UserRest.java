@@ -4,6 +4,8 @@ import cn.linjk.jarvis.common.bean.ResultInfo;
 import cn.linjk.jarvis.common.bean.SignInIdentity;
 import cn.linjk.jarvis.common.tables.DeviceInfo;
 import cn.linjk.jarvis.common.util.ResultInfoUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -25,12 +27,14 @@ import javax.servlet.http.HttpServletRequest;
  * @date: 2022/4/12 下午11:47
  * @description:
  */
+@Api("用户信息")
 @Slf4j
 @RestController
 public class UserRest {
     @Resource private HttpServletRequest request;
     @Resource private RedisTokenStore redisTokenStore;
 
+    @ApiOperation("获取登录用户信息")
     @GetMapping("user/me")
     public ResultInfo getCurrentUser(Authentication authentication) {
         // 获取登录用户的信息，然后设置

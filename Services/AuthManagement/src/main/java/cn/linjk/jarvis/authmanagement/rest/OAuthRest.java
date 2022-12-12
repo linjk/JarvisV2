@@ -2,12 +2,13 @@ package cn.linjk.jarvis.authmanagement.rest;
 
 import cn.linjk.jarvis.common.bean.ResultInfo;
 import cn.linjk.jarvis.common.util.ResultInfoUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,16 +26,14 @@ import java.util.Map;
  * @date: 2022/4/11 下午11:41
  * @description:
  */
+@Api("授权入口")
 @RestController
-@RequestMapping("oauth")
 public class OAuthRest {
     @Resource private TokenEndpoint tokenEndpoint;
     @Resource private HttpServletRequest request;
 
-    /**
-     * 重写原有的接口【/oauth/token】，自定义返回数据
-     */
-    @PostMapping("token")
+    @ApiOperation(value = "获取登录信息", notes = "重写原有的接口【/oauth/token】，自定义返回数据")
+    @PostMapping("/oauth/token")
     public ResultInfo<Map<String, Object>> postAccessToken(Principal principal, @RequestParam Map<String, String> parameters)
             throws HttpRequestMethodNotSupportedException {
         return custom(tokenEndpoint.postAccessToken(principal, parameters).getBody());

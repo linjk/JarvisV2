@@ -1,5 +1,5 @@
 server:
-  port: ${random.int[1024,9216]}
+  port: 4001
 
 spring:
   datasource:
@@ -9,8 +9,16 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: net.sf.log4jdbc.DriverSpy
   swagger:
+    enabled: true
     title: Jarvis认证中心
     base-package: cn.linjk.jarvis.authmanagement
+    contact:
+      name: LinJK
+    security:
+      filter-plugin: true
+      username: linjk
+      password: 123456
+
   cloud:
     sentinel:
       transport:
@@ -20,8 +28,8 @@ spring:
 
 client:
   oauth2:
-    client-id: jarvis-client # 客户端标识 ID
-    secret: 123321abc. # 客户端安全码
+    client-id: jarvis-client
+    secret: 123321abc.
     grant_types:
       - password
       - refresh_token

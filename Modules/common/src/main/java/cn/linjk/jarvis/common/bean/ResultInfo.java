@@ -19,6 +19,8 @@ import java.io.Serializable;
 @Setter
 @ApiModel(value = "返回说明")
 public class ResultInfo<T> implements Serializable {
+    private static final long serialVersionUID = 4104665778567314378L;
+
     @ApiModelProperty(value = "成功标识0=失败，1=成功")
     private Integer code;
     @ApiModelProperty(value = "描述信息")
