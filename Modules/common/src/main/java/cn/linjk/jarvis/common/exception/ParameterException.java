@@ -1,5 +1,6 @@
-package cn.linjk.jarvis.common.bean;
+package cn.linjk.jarvis.common.exception;
 
+import cn.linjk.jarvis.common.bean.Constant;
 import lombok.Getter;
 import lombok.Setter;
 

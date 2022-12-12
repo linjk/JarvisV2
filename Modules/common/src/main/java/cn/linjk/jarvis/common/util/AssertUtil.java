@@ -1,7 +1,7 @@
 package cn.linjk.jarvis.common.util;
 
 import cn.linjk.jarvis.common.bean.Constant;
-import cn.linjk.jarvis.common.bean.JarvisException;
+import cn.linjk.jarvis.common.exception.JarvisException;
 import org.apache.commons.lang3.StringUtils;
 
 /**
