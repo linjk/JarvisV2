@@ -64,6 +64,7 @@ public class DeviceInfo implements Serializable {
     @Column(name = "remark")
     private String remark;
 
+    @Transient
     @JsonIgnore
     private String verifyCode;
 

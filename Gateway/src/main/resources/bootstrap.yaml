@@ -11,7 +11,21 @@ spring:
         shared-configs[0]:
           dataId: redis-cluster.yaml
           refresh: true
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+      filter:
+        enabled: false
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: jarvis-gateway
   profiles:
     active: dev
+
+# 指标监控健康检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # 暴露的端点
