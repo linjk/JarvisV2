@@ -21,7 +21,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DeviceService implements UserDetailsService {
+public class DeviceAuthenticServiceImpl implements UserDetailsService {
     @Autowired private DeviceInfoRepo deviceInfoRepo;
 
     @Override

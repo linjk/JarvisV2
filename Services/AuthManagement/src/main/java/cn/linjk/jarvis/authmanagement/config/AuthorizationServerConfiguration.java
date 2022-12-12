@@ -9,7 +9,7 @@ package cn.linjk.jarvis.authmanagement.config;
  * @description: 授权服务
  */
 
-import cn.linjk.jarvis.authmanagement.service.DeviceService;
+import cn.linjk.jarvis.authmanagement.service.DeviceAuthenticServiceImpl;
 import cn.linjk.jarvis.common.bean.SignInIdentity;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,7 +32,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Resource private AuthenticationManager authenticationManager;
     @Resource private PasswordEncoder passwordEncoder;
     @Resource private ClientOAuth2DataConfiguration clientOAuth2DataConfiguration;
-    @Resource private DeviceService userService;
+    @Resource private DeviceAuthenticServiceImpl userService;
 
     /**
      * 配置令牌端点安全约束
