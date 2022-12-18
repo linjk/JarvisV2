@@ -32,6 +32,10 @@ public class Constant {
      */
     public static final String NO_LOGIN_MESSAGE = "Please login.";
     /**
+     * 参数错误信息
+     */
+    public static final String PARAMS_INVALID_MESSAGE = "Params invalid";
+    /**
      * 错误提示信息
      */
     public static final String ERROR_MESSAGE = "Oops! Something was wrong.";
