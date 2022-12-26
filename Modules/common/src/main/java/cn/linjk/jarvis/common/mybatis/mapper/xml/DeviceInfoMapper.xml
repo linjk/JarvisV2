@@ -22,7 +22,7 @@
   </resultMap>
 
   <select id="findDeviceByDeviceNameame" resultType="cn.linjk.jarvis.common.mybatis.entity.DeviceInfo">
-    select * from device_info where device_name = #{findDeviceByDeviceNameame}
+    select * from device_info where device_name = #{deviceName}
   </select>
 
   <select id="findDeviceByDeviceId" resultType="cn.linjk.jarvis.common.mybatis.entity.DeviceInfo">
