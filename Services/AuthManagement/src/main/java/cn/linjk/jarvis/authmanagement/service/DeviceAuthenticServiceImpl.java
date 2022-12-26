@@ -29,7 +29,7 @@ public class DeviceAuthenticServiceImpl implements UserDetailsService {
         AssertUtil.isNotEmpty(username, "设备名称为空");
         DeviceInfo u = new DeviceInfo();
         u.setDeviceName(username);
-        DeviceInfo deviceInfo = deviceInfoMapper.findDeviceByDeviceNameame(username);
+        DeviceInfo deviceInfo = deviceInfoMapper.selectOne(u);
         if (deviceInfo == null) {
             throw new UsernameNotFoundException("设备名或密码错误，请重新输入");
         }

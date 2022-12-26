@@ -68,6 +68,7 @@ public class DeviceInfo {
 
     private String remark;
 
+    @Transient
     private String verifyCode;
 
     /**

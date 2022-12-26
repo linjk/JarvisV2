@@ -28,7 +28,9 @@ public class DeviceServiceImpl implements IDeviceInfoApi {
 
     @Override
     public DeviceInfo getDeviceInfo(Long id) {
-        DeviceInfo deviceInfo = deviceInfoMapper.findDeviceByDeviceId(id);
+        DeviceInfo tmp = new DeviceInfo();
+        tmp.setId(id);
+        DeviceInfo deviceInfo = deviceInfoMapper.selectByPrimaryKey(tmp);
         Assert.notNull(deviceInfo, String.format("设备ID:%d不存在", id));
         return deviceInfo;
     }
@@ -47,7 +49,9 @@ public class DeviceServiceImpl implements IDeviceInfoApi {
         Assert.hasText(redisVerifyCode, "验证码已过期");
         Assert.isTrue(verifyCode.equals(redisVerifyCode), "验证码不匹配");
 
-        Assert.isTrue(Objects.isNull(deviceInfoMapper.findDeviceByDeviceNameame(deviceName)), "设备名称已被注册");
+        DeviceInfo tmp = new DeviceInfo();
+        tmp.setDeviceName(deviceName);
+        Assert.isTrue(Objects.isNull(deviceInfoMapper.selectOne(tmp)), "设备名称已被注册");
 
         secretKey = DigestUtil.md5Hex(secretKey);
         deviceInfo.setSecretKey(secretKey);
