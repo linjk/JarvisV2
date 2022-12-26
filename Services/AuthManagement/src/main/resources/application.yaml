@@ -3,11 +3,11 @@ server:
 
 spring:
   datasource:
-    url: jdbc:log4jdbc:mysql://localhost:3308/jarvis?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3308/jarvis?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
     username: ${MYSQL_ACCOUNT}
     password: ${MYSQL_PASSWORD}
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: net.sf.log4jdbc.DriverSpy
+    driver-class-name: com.mysql.jdbc.Driver
   swagger:
     enabled: true
     title: Jarvis认证中心
@@ -50,3 +50,7 @@ management:
 
 logging:
   config: classpath:logback/logback.xml
+
+
+mybatis:
+  mapper-locations: classpath*:cn/linjk/jarvis/common/mybatis/mapper/xml/*.xml
