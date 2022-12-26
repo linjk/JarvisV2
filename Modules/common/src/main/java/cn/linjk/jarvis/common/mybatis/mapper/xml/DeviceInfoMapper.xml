@@ -20,4 +20,12 @@
     <result column="roles" jdbcType="VARCHAR" property="roles" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
   </resultMap>
+
+  <select id="findDeviceByDeviceNameame" resultType="cn.linjk.jarvis.common.mybatis.entity.DeviceInfo">
+    select * from device_info where device_name = #{findDeviceByDeviceNameame}
+  </select>
+
+  <select id="findDeviceByDeviceId" resultType="cn.linjk.jarvis.common.mybatis.entity.DeviceInfo">
+    select * from device_info where id = #{id}
+  </select>
 </mapper>

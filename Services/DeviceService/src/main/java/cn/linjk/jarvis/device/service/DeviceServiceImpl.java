@@ -2,10 +2,8 @@ package cn.linjk.jarvis.device.service;
 
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.linjk.jarvis.apis.IDeviceInfoApi;
-import cn.linjk.jarvis.common.tables.DeviceInfo;
-import cn.linjk.jarvis.repos.DeviceInfoRepo;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.nacos.common.utils.StringUtils;
+import cn.linjk.jarvis.common.mybatis.entity.DeviceInfo;
+import cn.linjk.jarvis.common.mybatis.mapper.DeviceInfoMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +23,14 @@ import java.util.Objects;
 @Slf4j
 @DubboService(version = "1.0.0", group = "user-service")
 public class DeviceServiceImpl implements IDeviceInfoApi {
-    @Autowired private DeviceInfoRepo deviceInfoRepo;
+    @Autowired private DeviceInfoMapper deviceInfoMapper;
     @Resource private SendVerifyCodeService sendVerifyCodeService;
 
     @Override
     public DeviceInfo getDeviceInfo(Long id) {
-        DeviceInfo deviceInfo = deviceInfoRepo.findDeviceByDeviceId(id);
+        DeviceInfo deviceInfo = deviceInfoMapper.findDeviceByDeviceId(id);
         Assert.notNull(deviceInfo, String.format("设备ID:%d不存在", id));
-        return deviceInfoRepo.findDeviceByDeviceId(id);
+        return deviceInfo;
     }
 
     @Override
@@ -49,15 +47,15 @@ public class DeviceServiceImpl implements IDeviceInfoApi {
         Assert.hasText(redisVerifyCode, "验证码已过期");
         Assert.isTrue(verifyCode.equals(redisVerifyCode), "验证码不匹配");
 
-        Assert.isTrue(Objects.isNull(deviceInfoRepo.findDeviceByDeviceNameame(deviceName)), "设备名称已被注册");
+        Assert.isTrue(Objects.isNull(deviceInfoMapper.findDeviceByDeviceNameame(deviceName)), "设备名称已被注册");
 
         secretKey = DigestUtil.md5Hex(secretKey);
         deviceInfo.setSecretKey(secretKey);
-        DeviceInfo device = deviceInfoRepo.save(deviceInfo);
-        if (Objects.nonNull(device)) {
+        int cnt = deviceInfoMapper.insert(deviceInfo);
+        if (cnt > 0) {
             // 自动登录一次
             // TODO: cn.linjk.jarvis.device.rest.SignInRest.signIn(java.lang.String, java.lang.String, java.lang.String)
         }
-        return device;
+        return deviceInfo;
     }
 }
