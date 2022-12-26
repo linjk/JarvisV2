@@ -4,7 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.linjk.jarvis.apis.IDeviceInfoApi;
 import cn.linjk.jarvis.common.bean.Constant;
 import cn.linjk.jarvis.common.bean.ResultInfo;
-import cn.linjk.jarvis.common.tables.DeviceInfo;
+import cn.linjk.jarvis.common.mybatis.entity.DeviceInfo;
 import cn.linjk.jarvis.common.util.AssertUtil;
 import cn.linjk.jarvis.common.util.ResultInfoUtil;
 import cn.linjk.jarvis.device.bean.OAuthUserInfo;

@@ -3,6 +3,9 @@ package cn.linjk.jarvis.common.mybatis.entity;
 import java.util.Date;
 import javax.persistence.*;
 
+/**
+ * @author linjk
+ */
 @Table(name = "device_info")
 public class DeviceInfo {
     @Id
@@ -64,6 +67,8 @@ public class DeviceInfo {
     private String roles;
 
     private String remark;
+
+    private String verifyCode;
 
     /**
      * @return id
@@ -287,5 +292,13 @@ public class DeviceInfo {
      */
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getVerifyCode() {
+        return verifyCode;
+    }
+
+    public void setVerifyCode(String verifyCode) {
+        this.verifyCode = verifyCode;
     }
 }

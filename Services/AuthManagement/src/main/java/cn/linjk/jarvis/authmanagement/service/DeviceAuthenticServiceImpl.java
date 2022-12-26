@@ -11,7 +11,7 @@ package cn.linjk.jarvis.authmanagement.service;
 
 import cn.linjk.jarvis.repos.DeviceInfoRepo;
 import cn.linjk.jarvis.common.bean.SignInIdentity;
-import cn.linjk.jarvis.common.tables.DeviceInfo;
+import cn.linjk.jarvis.common.mybatis.entity.DeviceInfo;
 import cn.linjk.jarvis.common.util.AssertUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

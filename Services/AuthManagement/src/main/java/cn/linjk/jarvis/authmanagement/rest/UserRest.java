@@ -2,7 +2,7 @@ package cn.linjk.jarvis.authmanagement.rest;
 
 import cn.linjk.jarvis.common.bean.ResultInfo;
 import cn.linjk.jarvis.common.bean.SignInIdentity;
-import cn.linjk.jarvis.common.tables.DeviceInfo;
+import cn.linjk.jarvis.common.mybatis.entity.DeviceInfo;
 import cn.linjk.jarvis.common.util.ResultInfoUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

@@ -1,6 +1,6 @@
 package cn.linjk.jarvis.apis;
 
-import cn.linjk.jarvis.common.tables.DeviceInfo;
+import cn.linjk.jarvis.common.mybatis.entity.DeviceInfo;
 
 /**
  * Copyright 1990-2020 LinJK

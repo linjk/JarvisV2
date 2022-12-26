@@ -2,7 +2,7 @@ package cn.linjk.jarvis.device.rest;
 
 import cn.linjk.jarvis.apis.IDeviceInfoApi;
 import cn.linjk.jarvis.common.bean.ResultInfo;
-import cn.linjk.jarvis.common.tables.DeviceInfo;
+import cn.linjk.jarvis.common.mybatis.entity.DeviceInfo;
 import cn.linjk.jarvis.common.util.ResultInfoUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
