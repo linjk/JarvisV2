@@ -1,5 +1,6 @@
 package cn.linjk.jarvis.common.mybatis.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -7,7 +8,9 @@ import javax.persistence.*;
  * @author linjk
  */
 @Table(name = "device_info")
-public class DeviceInfo {
+public class DeviceInfo implements Serializable {
+    private static final long serialVersionUID = -3708599796432725044L;
+
     @Id
     @GeneratedValue(generator = "JDBC")
     private Long id;

@@ -20,6 +20,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class DeviceAuthenticServiceImpl implements UserDetailsService {
     @Autowired private DeviceInfoMapper deviceInfoMapper;
@@ -35,6 +37,12 @@ public class DeviceAuthenticServiceImpl implements UserDetailsService {
         }
         SignInIdentity signInIdentity = new SignInIdentity();
         BeanUtils.copyProperties(deviceInfo, signInIdentity);
+        if (Objects.equals(deviceInfo.getEnableFlag().intValue(), 1)) {
+            signInIdentity.setEnableFlag(1);
+        }
+        if (Objects.equals(deviceInfo.getValid().intValue(), 1)) {
+            signInIdentity.setValid(1);
+        }
         return signInIdentity;
     }
 
