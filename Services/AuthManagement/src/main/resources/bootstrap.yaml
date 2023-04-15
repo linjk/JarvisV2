@@ -4,6 +4,7 @@ spring:
   profiles:
     active: dev
   main:
+    # springboot2.1以上，默认禁用bean覆盖，这里开启，以兼容低版本
     allow-bean-definition-overriding: true
   cloud:
     nacos:
