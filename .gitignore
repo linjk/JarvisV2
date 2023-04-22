@@ -2,6 +2,7 @@
 *.log
 *.dat
 *.rdb
+*.class
 
 .idea/
 target/
@@ -9,4 +10,8 @@ cmake-build-debug/
 ControlCenter/Nacos/data/
 ControlCenter/Nacos/logs
 __pycache__/
+.classpath
+.project
+.factorypath
+.settings/
 
