@@ -67,6 +67,16 @@ client:
     scopes:
       - api
       - all
+    whites:
+      - /actuator/**
+      - /public/**
+      - /druid/**
+      - /static/**
+      - /swagger-ui.html
+      - /v2/api-docs
+      - /v3/swagger-login
+      - /swagger-resources
+      - /oauth/**
 
 # 指标监控健康检查
 management:
@@ -74,10 +84,10 @@ management:
     web:
       exposure:
         include: "*" # 暴露的端点
+        exclude: beans,mappings,env
 
 logging:
   config: classpath:logback/logback.xml
-
 
 mybatis:
   mapper-locations: classpath*:cn/linjk/jarvis/common/mybatis/mapper/xml/*.xml

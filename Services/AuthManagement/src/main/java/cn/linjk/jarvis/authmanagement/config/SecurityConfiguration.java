@@ -10,6 +10,7 @@ package cn.linjk.jarvis.authmanagement.config;
  */
 
 import cn.hutool.crypto.digest.DigestUtil;
+import cn.linjk.jarvis.common.bean.RedisKeyConstant;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -26,6 +27,7 @@ import javax.annotation.Resource;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Resource private RedisConnectionFactory redisConnectionFactory;
+    @Resource private ClientOAuth2DataConfiguration clientOAuth2DataConfiguration;
 
     /**
      * 初始化 RedisTokenStore 用于将 token 存储至 Redis
@@ -33,7 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public RedisTokenStore redisTokenStore() {
         RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
-        redisTokenStore.setPrefix("JARVIS:TOKEN:");
+        redisTokenStore.setPrefix(RedisKeyConstant.KEY_PREFIX.getKey());
         return redisTokenStore;
     }
 
@@ -71,11 +73,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/oauth/**", "/actuator/**",
-                        "/swagger-ui.html", "/v3/swagger-login", "/swagger-resources",
-                        "/v2/api-docs",
-                        "/static/**",
-                        "/druid/**").permitAll()
+                .antMatchers(clientOAuth2DataConfiguration.getWhites()).permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated();

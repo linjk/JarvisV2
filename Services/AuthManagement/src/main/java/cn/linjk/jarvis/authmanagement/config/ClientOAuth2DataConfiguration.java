@@ -41,4 +41,6 @@ public class ClientOAuth2DataConfiguration {
      * 客户端访问范围
      */
     private String[] scopes;
+
+    private String[] whites;
 }

@@ -2,7 +2,9 @@ package cn.linjk.jarvis.authmanagement.rest;
 
 import cn.linjk.jarvis.common.bean.ResultInfo;
 import cn.linjk.jarvis.common.bean.SignInIdentity;
+import cn.linjk.jarvis.common.bean.Uris;
 import cn.linjk.jarvis.common.mybatis.entity.DeviceInfo;
+import cn.linjk.jarvis.authmanagement.util.RSAUtil;
 import cn.linjk.jarvis.common.util.ResultInfoUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -35,7 +37,7 @@ public class UserRest {
     @Resource private RedisTokenStore redisTokenStore;
 
     @ApiOperation("获取登录用户信息")
-    @GetMapping("user/me")
+    @GetMapping(Uris.USER_CURRENT)
     public ResultInfo getCurrentUser(Authentication authentication) {
         // 获取登录用户的信息，然后设置
         SignInIdentity signInIdentity = (SignInIdentity) authentication.getPrincipal();
@@ -47,12 +49,8 @@ public class UserRest {
 
     /**
      * 安全退出
-     *
-     * @param access_token
-     * @param authorization
-     * @return
      */
-    @GetMapping("user/logout")
+    @GetMapping(Uris.USER_LOGOUT)
     public ResultInfo logout(String access_token, String authorization) {
         if (StringUtils.isBlank(access_token)) {
             access_token = authorization;
@@ -73,5 +71,20 @@ public class UserRest {
             redisTokenStore.removeRefreshToken(refreshToken);
         }
         return ResultInfoUtil.buildSuccess(request.getServletPath(), "退出成功");
+    }
+
+    @Resource private RSAUtil rsaUtil;
+    @GetMapping("/public/test")
+    public String test() {
+        try {
+            String enc = rsaUtil.encryptWithDefaultPublicKey("linjk");
+            log.info("enc: {}", enc);
+            log.info("raw: {}", rsaUtil.decryptWithDefaultPrivateKey(enc));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "done";
     }
 }

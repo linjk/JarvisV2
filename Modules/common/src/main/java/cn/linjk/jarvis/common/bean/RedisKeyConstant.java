@@ -12,7 +12,8 @@ import lombok.Getter;
  */
 @Getter
 public enum RedisKeyConstant {
-    VERIFY_CODE("verify_code:", "验证码");
+    VERIFY_CODE("verify_code:", "验证码"),
+    KEY_PREFIX("JARVIS:TOKEN:", "redis缓存key前缀");
 
     private String key;
     private String desc;
