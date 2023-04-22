@@ -1,6 +1,7 @@
 package cn.linjk.jarvis.authmanagement.rest;
 
 import cn.linjk.jarvis.common.bean.ResultInfo;
+import cn.linjk.jarvis.common.bean.Uris;
 import cn.linjk.jarvis.common.util.ResultInfoUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,7 +34,7 @@ public class OAuthRest {
     @Resource private HttpServletRequest request;
 
     @ApiOperation(value = "获取登录信息", notes = "重写原有的接口【/oauth/token】，自定义返回数据")
-    @PostMapping("/oauth/token")
+    @PostMapping(Uris.GET_TOKEN_BY_LOGIN)
     public ResultInfo<Map<String, Object>> postAccessToken(Principal principal, @RequestParam Map<String, String> parameters)
             throws HttpRequestMethodNotSupportedException {
         return custom(tokenEndpoint.postAccessToken(principal, parameters).getBody());
