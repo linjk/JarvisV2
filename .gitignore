@@ -3,10 +3,13 @@
 *.dat
 *.rdb
 *.class
+*.pid
 
 .idea/
 target/
 cmake-build-debug/
+native/build/
+native/CMakeFiles/
 ControlCenter/Nacos/data/
 ControlCenter/Nacos/logs
 __pycache__/
