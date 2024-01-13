@@ -10,6 +10,7 @@
 #include <utility>
 
 #include <opencv2/opencv.hpp>
+#include <opencv4/opencv2/ml.hpp>
 
 #include <boost/assert.hpp>
 #include <boost/date_time/gregorian/gregorian.hpp>

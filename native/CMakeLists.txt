@@ -43,6 +43,6 @@ add_executable(
         utils/car_oil_util.hpp
         entity/car_oil.h
         commons/jarvis.h
-        utils/json_util.hpp utils/mqtt_util.hpp utils/selection_sort_util.h)
+        utils/json_util.hpp utils/mqtt_util.hpp)
 
-target_link_libraries(Jarvis mysqlclient mysqlpp)
+target_link_libraries(Jarvis mysqlclient mysqlpp opencv_core opencv_highgui opencv_imgproc opencv_ml opencv_objdetect)
