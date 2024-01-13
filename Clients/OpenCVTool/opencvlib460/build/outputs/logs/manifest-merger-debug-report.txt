@@ -1,0 +1,11 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/linjk/Documents/code/java/Jarvis/Clients/OpenCVTool/opencvlib460/src/main/AndroidManifest.xml:2:1-4:12
+INJECTED from /Users/linjk/Documents/code/java/Jarvis/Clients/OpenCVTool/opencvlib460/src/main/AndroidManifest.xml:2:1-4:12
+INJECTED from /Users/linjk/Documents/code/java/Jarvis/Clients/OpenCVTool/opencvlib460/src/main/AndroidManifest.xml:2:1-4:12
+	package
+		ADDED from /Users/linjk/Documents/code/java/Jarvis/Clients/OpenCVTool/opencvlib460/src/main/AndroidManifest.xml:3:7-27
+		INJECTED from /Users/linjk/Documents/code/java/Jarvis/Clients/OpenCVTool/opencvlib460/src/main/AndroidManifest.xml
+		INJECTED from /Users/linjk/Documents/code/java/Jarvis/Clients/OpenCVTool/opencvlib460/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/linjk/Documents/code/java/Jarvis/Clients/OpenCVTool/opencvlib460/src/main/AndroidManifest.xml:2:11-69
